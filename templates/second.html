@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Second</title>
+    </head>
+
+    <body>
+        <p>Second</p>
+        <p>{%for book in books%}
+                {%if book.is_published %}
+                    <p style="color:blue">{{book.title}}</p>
+                {%else%}
+                    <p style="color:red">{{book.title}}</p>                
+                {%endif%}
+            {% endfor%}
+        </p>
+        <p>{{data}}</p>
+    </body>
+</html>
