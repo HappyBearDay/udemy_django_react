@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Header(){
-    return <h2> This is our HEADER</h2>
+function Header(props   ){
+    return (<h2>{props.info}</h2>)
 }
 
 export {Header};
