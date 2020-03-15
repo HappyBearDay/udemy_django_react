@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 class Footer extends Component{
 
     state = {
-        name : 'bear'
+        name : 'bear',
+        isLogin : true
     }
 
     // We can add 'scenario' before/after some life cycle moment
@@ -20,19 +21,28 @@ class Footer extends Component{
         //Unsubscribe here
     }
 
+
+
     createAlert = () => {alert('FOOTER')}
     changed  =(event) => {
-        console.log(event.target.value)
-        //console.log('changed', event)
         this.setState({ name : event.target.value})
     }
 
     render () {
         return (
-        <div>
-            <h2 onClick={this.props.myalert} > {this.props.trademark}</h2>
-            <input onChange={this.changed } value={this.state.name} type='text'></input>
-        </div>
+            <div>
+                { this.state.isLogin ? (
+                    <React.Fragment>
+                        <h2 onClick={this.props.myalert}> {this.props.trademark}</h2>
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
+                        <p>You can't see this content.</p>
+                        <p>You must be login.</p>
+                    </React.Fragment>
+                )}
+                <input onChange={this.changed } value={this.state.name} type='text'></input>                
+            </div>
             )
     }
 }

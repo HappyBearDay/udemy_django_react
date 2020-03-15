@@ -12,15 +12,20 @@ function OurText(props) {
 }
 
 function create_external_alert(){alert('ALERT')}
+
 function App() {
+  const userLogin = true
+  if (userLogin){
   return (
     <div className="App">
       <Header info='this is my message'/>
       <OurText/>
-      <Footer trademark='page by bear' myalert={create_external_alert}/>
-      
+      <Footer trademark='page by bear' myalert={create_external_alert}/> 
     </div>
-  );
+  )
+  } else {
+    return (<div>Forbidden</div>)
+  }
 }
 
 export default App ;
