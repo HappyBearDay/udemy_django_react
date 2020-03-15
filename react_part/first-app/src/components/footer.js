@@ -5,7 +5,7 @@ class Footer extends Component{
 
     state = {
         name : 'bear',
-        isLogin : true
+        isLogin : false
     }
 
     // We can add 'scenario' before/after some life cycle moment
@@ -47,6 +47,7 @@ class Footer extends Component{
                                     )
                             })}
                         </div>
+                        <input onChange={this.changed } value={this.state.name} type='text'></input>
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
@@ -54,7 +55,7 @@ class Footer extends Component{
                         <p>You must be login.</p>
                     </React.Fragment>
                 )}
-                <input onChange={this.changed } value={this.state.name} type='text'></input>                
+                                
             </div>
             )
     }
