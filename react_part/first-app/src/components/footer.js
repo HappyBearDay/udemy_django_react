@@ -7,7 +7,20 @@ class Footer extends Component{
         name : 'bear'
     }
 
-    createAlert = () => {alert('HEEAAADERRR')}
+    // We can add 'scenario' before/after some life cycle moment
+    // A good practice is to subscribe to BDD/Rest API at 'DidMount'
+    // And Unsubscribe at 'WillUnmount'
+
+    componentDidMount(){
+        this.setState({name : 'MyName'})
+        //Subscribe here
+    }
+
+    componentWillUnmount(){
+        //Unsubscribe here
+    }
+
+    createAlert = () => {alert('FOOTER')}
     changed  =(event) => {
         console.log(event.target.value)
         //console.log('changed', event)
