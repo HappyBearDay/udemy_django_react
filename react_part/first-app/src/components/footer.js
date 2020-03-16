@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import {CtxConsumer} from '../index'
 
 class Footer extends Component{
 
     state = {
         name : 'bear',
-        isLogin : false
+        isLogin : true
     }
 
     // We can add 'scenario' before/after some life cycle moment
@@ -30,23 +30,32 @@ class Footer extends Component{
 
     render () {
 
-        const  animals = ['cat','dog', 'horse'];
+        //const  animals = ['cat','dog', 'horse'];
 
         return (
             <div>
                 { this.state.isLogin ? (
                     <React.Fragment>
                         <h2 onClick={this.props.myalert}> {this.props.trademark}</h2>
-                        <div>
-                            { animals.map( (animal, index) =>{
+                        <CtxConsumer>
+                            {(context) => (
+                              context.animals.map( (animal, index) =>{
                                 return (
                                     <div key={index}>
                                         <h1>{animal}</h1>
                                         <h1>{animal}</h1>
                                     </div>
                                     )
-                            })}
-                        </div>
+                            } ) )}
+                            {/* animals.map( (animal, index) =>{
+                                return (
+                                    <div key={index}>
+                                        <h1>{animal}</h1>
+                                        <h1>{animal}</h1>
+                                    </div>
+                                    )
+                            })*/}
+                        </CtxConsumer>
                         <input onChange={this.changed } value={this.state.name} type='text'></input>
                     </React.Fragment>
                 ) : (
