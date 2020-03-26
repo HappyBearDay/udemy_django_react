@@ -3,11 +3,18 @@ import './App.css';
 import {Header} from './components/header'
 import Footer from './components/footer'
 
+import styled from 'styled-components'
+
 
 function OurText(props) {
+  const Paragraph = styled.p`
+  font-size : 3em;
+  color : red;
+  `
   return (
     <React.Fragment>
       <p>This is our content</p> 
+      <Paragraph>This is our content</Paragraph> 
     </React.Fragment>
     )
 }
