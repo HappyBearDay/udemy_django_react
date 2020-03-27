@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {Header} from './components/header'
 import Footer from './components/footer'
+import Number from './components/numbers'
 
 import styled from 'styled-components'
 
@@ -26,9 +27,7 @@ function App() {
   if (userLogin){
   return (
     <div className="App">
-      <Header info='this is my message'/>
-      <OurText/>
-      <Footer trademark='page by bear' myalert={create_external_alert}/> 
+    <Number/>
     </div>
   )
   } else {
