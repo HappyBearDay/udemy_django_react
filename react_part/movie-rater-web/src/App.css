@@ -9,6 +9,23 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   text-align: left;
+}
+
+.orange {
+  color: orange;
+}
+
+.purple {
+  color: purple;
+}
+
+.rate-container {
+  border-top: 2px solid purple;
+}
+
+.rate-container span.fa {
+  font-size: 2em;
+  cursor: pointer;
 }
