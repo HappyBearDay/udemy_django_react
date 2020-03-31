@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import './App.css';
 import MovieList from './components/movie-list'
+import MovieDetails from './components/movie-details'
 
 
 class App extends Component {
 
   state = {
-    movies: []
+    movies: [],
+    selectedMovie: null
   }
 
       
@@ -23,11 +25,14 @@ class App extends Component {
   }
 
   render (){
-    const movies = this.state.movies
+    
     return (
       <div className="App">
         <h1>Movie Rater</h1>
-        <MovieList movies={movies}/>
+        <div className='layout'>
+          <MovieList movies={this.state.movies}/>
+          <MovieDetails selectedMovie={this.state.selectedMovie}/>
+        </div>
       </div>
     );
   }
