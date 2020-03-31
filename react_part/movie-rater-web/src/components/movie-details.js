@@ -20,7 +20,20 @@ class MovieDetails extends Component {
             },
             body : JSON.stringify({stars : stars+1})
         }).then( resp => resp.json())
-        .then( res => console.log(res) )
+        .then( res => this.getDetails() )
+        .catch( error=> console.log(error))
+
+    }
+
+    getDetails = () => {
+        fetch(`http://127.0.0.1:8000/api/movies/${this.props.selectedMovie.id}/`, {
+            method: 'GET',
+            'headers': {
+                'Content-Type' : 'application/json',
+                'Authorization': 'Token  057a1ee54639790b27251dc92f86bffecc31cec4'
+            }
+        }).then( resp => resp.json())
+        .then( res => this.props.updateMovie(res) )
         .catch( error=> console.log(error))
 
     }
