@@ -17,33 +17,33 @@ class App extends Component {
     fetch(`http://127.0.0.1:8000/api/movies/`, {
         method: 'GET',
         'headers': {
-            'Authorization': 'Token  057a1ee54639790b27251dc92f86bffecc31cec4'
+            'Authorization': 'Token 057a1ee54639790b27251dc92f86bffecc31cec4'
         }
     }).then( resp => resp.json())
       .then( res => this.setState({movies : res}) )
       .catch( error=> console.log(error))
   }
 
-  loadMovie = (movie) => {
-    this.setState({selectedMovie: movie, editedMovie : null})
+  loadMovie = movie => {
+    this.setState({selectedMovie: movie, editedMovie: null});
   }
-
-  movieDeleted = (selMovie) => {
+  movieDeleted = selMovie => {
     const movies = this.state.movies.filter( movie => movie.id !== selMovie.id);
     this.setState({movies: movies, selectedMovie: null})
   }
-
-  editClicked = (selMovie) => {
-    this.setState({editedMovie : selMovie, selectedMovie: null })
+  editClicked = selMovie => {
+    this.setState({editedMovie: selMovie, selectedMovie: null});
   }
-
-  newMovie = () =>{
-    this.setState({editedMovie : {title : '', description : ''} })
+  newMovie = () => {
+    this.setState({editedMovie: {title: '', description: ''}});
   }
 
   cancelForm = () => {
-    this.setState({editedMovie : null })     
+    this.setState({editedMovie: null, selectedMovie: null});
   }
+  addMovie = movie => {
+    this.setState({movies: [...this.state.movies, movie], selectedMovie: movie, editedMovie: null});
+}
 
   render (){
     return (
@@ -51,13 +51,13 @@ class App extends Component {
         <h1>Movie Rater</h1>
         <div className='layout'>
           <MovieList movies={this.state.movies} movieClicked={this.loadMovie} 
-                    movieDeleted={this.movieDeleted} editClicked={this.editClicked}
-                    newMovie={this.newMovie}/>
+          movieDeleted={this.movieDeleted} editClicked={this.editClicked} newMovie={this.newMovie}/>
           <div>
             { !this.state.editedMovie ? (
-              <MovieDetails selectedMovie={this.state.selectedMovie} updateMovie={this.loadMovie}/>
+              <MovieDetails movie={this.state.selectedMovie} updateMovie={this.loadMovie}/>
             ) : (
-              <MovieForm editedMovie={this.state.editedMovie} cancelForm={this.cancelForm}/>
+              <MovieForm movie={this.state.editedMovie} cancelForm={this.cancelForm} 
+              addMovie={this.addMovie} editedMovie={this.loadMovie}/>
             )}
           </div>
         </div>

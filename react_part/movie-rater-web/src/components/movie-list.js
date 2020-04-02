@@ -3,31 +3,35 @@ import React, {Component} from 'react';
 var FontAwesome = require('react-fontawesome')
 
 class MovieList extends Component {
-    movieClicked = (movie) => {this.props.movieClicked(movie)}
-
-    editClicked = (movie) => {
-        this.props.editClicked(movie)
-    }
     
-    removeClicked = (movie) => {
-        fetch(`http://127.0.0.1:8000/api/movies/${movie.id}/`, {
-            method: 'DELETE',
-            'headers': {
-                'Content-Type' : 'application/json',
-                'Authorization': 'Token  057a1ee54639790b27251dc92f86bffecc31cec4'
-            }
-        }).then( resp => this.props.movieDeleted(movie))
-        .catch( error=> console.log(error))
-    }
+    
+    movieClicked = movie =>{
+        this.props.movieClicked(movie);
+    };
 
-    newMovie = () => {this.props.newMovie()}
+    editClicked = movie => {
+        this.props.editClicked(movie);
+    }
+    removeClicked = movie => {
+        fetch(`${process.env.REACT_APP_API_URL}/api/movies/${movie.id}/`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token 057a1ee54639790b27251dc92f86bffecc31cec4'
+            }
+            }).then( resp => this.props.movieDeleted(movie))
+            .catch( error => console.log(error))
+    };
+    newMovie = () => {
+        this.props.newMovie();
+};
 
     render(){
     return ( 
         <React.Fragment>
             {this.props.movies.map( (movie, index) => {
                 return (
-                        <div key={movie.id} className='movie-item'>
+                        <div key={index} className='movie-item'>
                             <h3 onClick={() => this.movieClicked(movie)}>
                                 {movie.title}
                             </h3>
