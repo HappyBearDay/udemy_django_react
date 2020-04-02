@@ -17,7 +17,7 @@ class MovieList extends Component {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Token 057a1ee54639790b27251dc92f86bffecc31cec4'
+                'Authorization': `Token ${this.props.token}`
             }
             }).then( resp => this.props.movieDeleted(movie))
             .catch( error => console.log(error))
