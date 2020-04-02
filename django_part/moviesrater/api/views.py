@@ -50,13 +50,13 @@ class MovieViewSet(viewsets.ModelViewSet):
 class RatingViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
-    authentication_classes = (TokenAuthentication,  )
-    permission_classes = (IsAuthenticated, )
+    authentication_classes = (TokenAuthentication, )
+    permission_classes = (IsAuthenticated,)
 
-    def update(self, request):
-        response = {"message" : "you can't update rating like this"}
+    def update(self, request, *args, **kwargs):
+        response = {'message': 'You cant update rating like that'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
-    
-    def create(self, request):
-        response = {"message" : "you can't create rating like this"}
+
+    def create(self, request, *args, **kwargs):
+        response = {'message': 'You cant create rating like that'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
