@@ -3,6 +3,7 @@ import './App.css';
 import MovieList from './components/movie-list'
 import MovieDetails from './components/movie-details'
 import MovieForm from './components/movie-form'
+
 var FontAwesome = require('react-fontawesome')
 
 function compare(a, b) {
