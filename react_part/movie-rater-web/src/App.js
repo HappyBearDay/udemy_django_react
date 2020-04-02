@@ -3,7 +3,7 @@ import './App.css';
 import MovieList from './components/movie-list'
 import MovieDetails from './components/movie-details'
 import MovieForm from './components/movie-form'
-
+var FontAwesome = require('react-fontawesome')
 
 function compare(a, b) {
 
@@ -65,7 +65,10 @@ class App extends Component {
   render (){
     return (
       <div className="App">
-        <h1>Movie Rater</h1>
+        <h1>
+          <FontAwesome name='film'/>
+          <span> Movie Rater</span>
+        </h1>
         <div className='layout'>
           <MovieList movies={this.state.movies} movieClicked={this.loadMovie} 
           movieDeleted={this.movieDeleted} editClicked={this.editClicked} newMovie={this.newMovie}/>
