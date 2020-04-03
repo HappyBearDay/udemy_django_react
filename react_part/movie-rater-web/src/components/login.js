@@ -28,9 +28,15 @@ class Login extends Component {
             body: JSON.stringify(this.state.credentials)
             }).then( resp => resp.json())
             .then( res => {
+                console.log('res.token');
                 console.log(res.token);
-                this.props.cookies.set('mr-token', res.token);
-                window.location.href = '/movies';
+                if(res.token === undefined){
+                    this.setState({message: 'username or password is incorrect'});
+                }else{
+                    this.props.cookies.set('mr-token', res.token);
+                    window.location.href = '/movies';
+                }
+                
             })
             .catch( error => {
                 console.log(error);

@@ -23,32 +23,31 @@ function compare(a, b) {
 
 
 class App extends Component {
-  state = {
-    movies: [],
-    selectedMovie: null,
-    editedMovie: null,
-    token: this.props.cookies.get('mr-token')
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: [],
+      selectedMovie: null,
+      editedMovie: null,
+      token: props.cookies.get('mr-token')
+    }
   }
 
   componentDidMount(){
-
-    if(this.state.token){
+    if(this.state.token === undefined){
+      window.location.href = '/'
+    } else{
       //fetch data
       fetch(`http://127.0.0.1:8000/api/movies/`, {
-          method: 'GET',
-          'headers': {
-              'Authorization': `Token ${this.state.token}`
-          }
+        method: 'GET',
+        'headers': {
+            'Authorization': `Token ${this.state.token}`
+        }
       }).then( resp => resp.json())
-        .then( res => {
-          console.log(res);
-          this.setState({movies : res.sort(compare)});
-            } )
-        .catch( error=> console.log(error))
-    } else{
-      window.location.href = '/'
+        .then( res => {this.setState({movies : res.sort(compare)}); } )
+        .catch( error=> console.log(error))    
     }
-
   }
 
   loadMovie = movie => {
@@ -73,10 +72,17 @@ class App extends Component {
   addMovie = movie => {
     this.setState({movies: [...this.state.movies, movie].sort(compare), selectedMovie: movie, editedMovie: null});
 }
+  logout = () =>{
+    console.log('logout')
+    this.setState({token : false});
+    this.props.cookies.remove('mr-token');
+    window.location.href = '/';
+  }
 
   render (){
     return (
       <div className="App">
+      <button onClick={this.logout}>logout</button>
         <h1>
           <FontAwesome name='film'/>
           <span> Movie Rater</span>
