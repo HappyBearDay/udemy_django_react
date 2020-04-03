@@ -40,7 +40,10 @@ class App extends Component {
               'Authorization': `Token ${this.state.token}`
           }
       }).then( resp => resp.json())
-        .then( res => this.setState({movies : res.sort(compare)}) )
+        .then( res => {
+          console.log(res);
+          this.setState({movies : res.sort(compare)});
+            } )
         .catch( error=> console.log(error))
     } else{
       window.location.href = '/'
