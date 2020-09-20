@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, ScrollView, FlatList, TextInput } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, ImageBackground } from 'react-native';
 
 export default function Home(props) {
 
@@ -8,6 +8,9 @@ export default function Home(props) {
 
   return (
     <View style={styles.home}>
+      <ImageBackground
+        style={{width:"100%", height:"100%"}}
+        source={require("../assets/apple.jpeg")}>
       <FlatList
         data={[
           {key: "Krystian"},
@@ -30,6 +33,7 @@ export default function Home(props) {
           ({item}, id)=> <Text style={styles.text} key={id}>{item.key}</Text>
       }
       />
+      </ImageBackground>
     </View>
   );
 }
