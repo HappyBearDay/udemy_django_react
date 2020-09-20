@@ -7,19 +7,23 @@ export default function Home(props) {
   const [name, setName] = useState("Krystian");
 
   return (
-    <View style={styles.container}>
+    <View style={styles.home}>
       <Text>{props.msg}</Text>
-      <Text>{name}</Text>
+      <Text style={styles.name} >{name}</Text>
       <StatusBar style="auto" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  home: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  name: {
+    color: "#00ff00",
+    marginTop: 30
+  }
 });
