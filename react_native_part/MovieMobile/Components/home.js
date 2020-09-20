@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, FlatList, TextInput } from 'react-native';
 
 export default function Home(props) {
 
@@ -8,16 +8,27 @@ export default function Home(props) {
 
   return (
     <View style={styles.home}>
-      <Text style={styles.name} >{name}</Text>
-      <TextInput
-        style={{height: 40, backgroundColor: "red"}}
-        value={name}
-        placeholder="Type in your name"
-        onChangeText={(text)=> setName(text)}
-      />
-
-      <Button title="CLICK ME"
-        onPress={()=> alert(name + " You clicked the button")}
+      <FlatList
+        data={[
+          {key: "Krystian"},
+          {key: "Krystian1"},
+          {key: "Krystian2"},
+          {key: "Krystian3"},
+          {key: "Krystian4"},
+          {key: "Krystian5"},
+          {key: "Krystian6"},
+          {key: "Krystian7"},
+          {key: "Krystian7"},
+          {key: "Krystian7"},
+          {key: "Krystian7"},
+          {key: "Krystian7"},
+          {key: "Krystian7"},
+          {key: "Krystian7"},
+          {key: "Krystian7"},
+        ]}
+        renderItem={
+          ({item}, id)=> <Text style={styles.text} key={id}>{item.key}</Text>
+      }
       />
     </View>
   );
@@ -27,11 +38,8 @@ const styles = StyleSheet.create({
   home: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: "column",
   },
-  name: {
-    marginBottom: 30,
+  text: {
+    fontSize: 40
   }
 });
