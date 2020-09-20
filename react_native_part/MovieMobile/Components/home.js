@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function Home(props) {
 
@@ -8,9 +8,17 @@ export default function Home(props) {
 
   return (
     <View style={styles.home}>
-      <Text style={styles.text}>Btn</Text>
       <Text style={styles.name} >{name}</Text>
-      <Text style={styles.text}>Btn</Text>
+      <TextInput
+        style={{height: 40, backgroundColor: "red"}}
+        value={name}
+        placeholder="Type in your name"
+        onChangeText={(text)=> setName(text)}
+      />
+
+      <Button title="CLICK ME"
+        onPress={()=> alert(name + " You clicked the button")}
+      />
     </View>
   );
 }
@@ -24,11 +32,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   name: {
-    color: "#00ff00",
-    marginTop: 30,
-    flex: 5
-  },
-  text: {
-    flex: 1
+    marginBottom: 30,
   }
 });
