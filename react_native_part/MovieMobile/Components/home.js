@@ -21,13 +21,13 @@ export default function Home(props) {
           {key: "Krystian5"},
           {key: "Krystian6"},
           {key: "Krystian7"},
-          {key: "Krystian7"},
-          {key: "Krystian7"},
-          {key: "Krystian7"},
-          {key: "Krystian7"},
-          {key: "Krystian7"},
-          {key: "Krystian7"},
-          {key: "Krystian7"},
+          {key: "Krystian8"},
+          {key: "Krystian9"},
+          {key: "Krystian10"},
+          {key: "Krystian11"},
+          {key: "Krystian12"},
+          {key: "Krystian13"},
+          {key: "Krystian14"},
         ]}
         renderItem={
           ({item}, id)=> <Text style={styles.text} key={id}>{item.key}</Text>
