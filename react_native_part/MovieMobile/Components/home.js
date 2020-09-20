@@ -8,9 +8,9 @@ export default function Home(props) {
 
   return (
     <View style={styles.home}>
-      <Text>{props.msg}</Text>
+      <Text style={styles.text}>Btn</Text>
       <Text style={styles.name} >{name}</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.text}>Btn</Text>
     </View>
   );
 }
@@ -21,9 +21,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: "column",
   },
   name: {
     color: "#00ff00",
-    marginTop: 30
+    marginTop: 30,
+    flex: 5
+  },
+  text: {
+    flex: 1
   }
 });
